@@ -331,6 +331,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4766939553588384115, guid: e0b5c3c9b4649654d9b7848021b1b215,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6543107885156862983, guid: e0b5c3c9b4649654d9b7848021b1b215,
         type: 3}
       propertyPath: m_Name
@@ -384,6 +389,11 @@ PrefabInstance:
     - target: {fileID: 8513930405239072772, guid: e0b5c3c9b4649654d9b7848021b1b215,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562544745270393942, guid: e0b5c3c9b4649654d9b7848021b1b215,
+        type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
