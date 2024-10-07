@@ -23,7 +23,7 @@ public class SpawnObjects : MonoBehaviour
         yield return new WaitForSeconds(3);
         // Arvottavien objektien lukum‰‰r‰ 3kpl
         whichItem = Random.Range(0, 3);
-        xPos = Random.Range(-1, 2) * 3;
+        xPos = Random.Range(-1, 2) * 1;
 
         // Spawnataan arvottu objekti, arvotulle linjalle xPos, korkeutta ja kuinka kauas spawnataan voidaan muuttaa.
         Instantiate(allItems[whichItem], new Vector3(xPos, 0.5f, -55), allItems[whichItem].rotation);
