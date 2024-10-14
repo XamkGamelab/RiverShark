@@ -16,26 +16,35 @@ public class InputManager : Singleton<InputManager>
     public delegate void EndTouch(Vector2 position, float time);
     public event EndTouch OnEndTouch;
 
+    private bool isTouching; // to keep track whether touch is active
+
     #endregion
     private TouchControls touchControls;
 
     protected override void Awake()
     {
+        base.Awake();
         touchControls = new TouchControls();
         mainCamera = Camera.main;
 
-        if (mainCamera != null )
+        if (mainCamera == null )
         {
             Debug.Log("mainCamera is null.");
+        }
+        else
+        {
+            Debug.Log("mainCamera initialized.");
         }
     }
     private void OnEnable()
     {
         touchControls.Enable();
+        Debug.Log("InputManager enabled, subscribing to events.");
     }
     private void OnDisable()
     {
         touchControls.Disable();
+        Debug.Log("InputManager disabled, unsubscribing from events.");
     }
     void Start()
     {
@@ -45,6 +54,7 @@ public class InputManager : Singleton<InputManager>
 
     private void StartTouchPrimary(InputAction.CallbackContext context)
     {
+        Debug.Log("Calling StartTouchPrimary()");
         Vector2 screenPosition = touchControls.Touch.PrimaryPosition.ReadValue<Vector2>();
         Debug.Log($"Raw screen position at start of swipe: {screenPosition}");
 
@@ -56,18 +66,22 @@ public class InputManager : Singleton<InputManager>
         {
             Debug.Log("OnStartTouch is null!");
         }
-
+        isTouching = true;
     }
     private void EndTouchPrimary(InputAction.CallbackContext context)
     {
-
-        if (OnEndTouch != null)
+        Debug.Log("Calling EndTouchPrimary()");
+        if (isTouching)
         {
-            OnEndTouch(Utils.ScreenToWorld(mainCamera, touchControls.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
-        }
-        else
-        {
-            Debug.Log("OnEndTouch is null!");
+            if (OnEndTouch != null)
+            {
+                OnEndTouch(Utils.ScreenToWorld(mainCamera, touchControls.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
+            }
+            else
+            {
+                Debug.Log("OnEndTouch is null!");
+            }
+            isTouching= false; // resetting to false when touch ends
         }
     }
 
