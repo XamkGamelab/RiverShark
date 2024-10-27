@@ -9,7 +9,7 @@ public class SpawnObjects : MonoBehaviour
     // arvottu objekti
     private int whichItem;
     // Arvottu linja
-    private int xPos;
+    private float xPos;
 
     private void Start()
     {
@@ -23,10 +23,10 @@ public class SpawnObjects : MonoBehaviour
         yield return new WaitForSeconds(3);
         // Arvottavien objektien lukum‰‰r‰ 3kpl
         whichItem = Random.Range(0, 3);
-        xPos = Random.Range(-1, 2) * 1;
+        xPos = Random.Range(-3f, 3f);
 
         // Spawnataan arvottu objekti, arvotulle linjalle xPos, korkeutta ja kuinka kauas spawnataan voidaan muuttaa.
-        Instantiate(allItems[whichItem], new Vector3(xPos, 0.5f, -55), allItems[whichItem].rotation);
+        Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, -55), allItems[whichItem].rotation);
 
         // Aloittaa arvonnan alusta.
         StartCoroutine(spawnTimer());
