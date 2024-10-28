@@ -9,8 +9,8 @@ public class SwipeDetection : MonoBehaviour
     [SerializeField] private float minimumDistance = 0.01f;
     [SerializeField] private float maximumTime = 1f;
 
-    private float verticalDirectionThreshold = 0.7f; 
-    private float horizontalDirectionThreshold = 0.8f;
+    private float verticalDirectionThreshold = 0.5f; 
+    private float horizontalDirectionThreshold = 0.6f;
 
 
     [SerializeField] private PlayerController playerController;
