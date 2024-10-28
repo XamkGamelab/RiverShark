@@ -25,7 +25,7 @@ public class SwipeDetection : MonoBehaviour
     private void Awake()
     {
         inputManager = InputManager.Instance;
-        playerController = GameObject.Find("Shark").GetComponent<PlayerController>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         if (inputManager == null)
         {

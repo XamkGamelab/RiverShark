@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        playerController = GameObject.Find("Shark").GetComponent<PlayerController>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         healthDisplay = GameObject.Find("HealthBar").GetComponent<HealthDisplay>();
         tryAgainButton = GameObject.Find("TryAgainButton");
         tryAgainButton.SetActive(false);
