@@ -11,7 +11,7 @@ public class HealthDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerController = GameObject.Find("Shark").GetComponent<PlayerController>();
         for (int i = 0; i < playerController.maxHealth; i++) // Fill hearts array
         {
             hearts[i].sprite = Heart;

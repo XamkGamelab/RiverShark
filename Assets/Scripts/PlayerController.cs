@@ -30,14 +30,14 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-            transform.position += new Vector3(-horizontalSpeed, 0, 0);
+            transform.position += new Vector3(horizontalSpeed, 0, 0);
         }
     }
     public void MoveRight()
     {
         if (canMove)
         {
-            transform.position += new Vector3(horizontalSpeed, 0, 0);
+            transform.position += new Vector3(-horizontalSpeed, 0, 0);
         }
     }
     public void Jump()

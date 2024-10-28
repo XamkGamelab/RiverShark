@@ -6,7 +6,7 @@ using UnityEngine;
 public class SwipeDetection : MonoBehaviour
 {
 
-    [SerializeField] private float minimumDistance = 0.01f;
+    [SerializeField] private float minimumDistance = 0.5f;
     [SerializeField] private float maximumTime = 1f;
 
     private float verticalDirectionThreshold = 0.5f; 
@@ -25,6 +25,7 @@ public class SwipeDetection : MonoBehaviour
     private void Awake()
     {
         inputManager = InputManager.Instance;
+        playerController = GameObject.Find("Shark").GetComponent<PlayerController>();
 
         if (inputManager == null)
         {
