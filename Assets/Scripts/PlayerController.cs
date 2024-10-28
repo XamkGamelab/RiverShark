@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 5;
-    [SerializeField] private int Health;
+    public int maxHealth = 5;
+    public int Health;
+    [SerializeField] private HealthDisplay healthDisplay;
     private GameManager gameManager;
+    private Vector3 startPosition;
     private float horizontalSpeed = 1f;
     private float jumpForce = 5f;
     public bool isGrounded;
@@ -18,14 +20,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isGrounded = true;
-        canMove = true;
-        isDead = false;
+        startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
-        Health = maxHealth;
+        healthDisplay = GameObject.Find("HealthBar").GetComponent<HealthDisplay>();
+        ResetPlayer();
     }
-
     public void MoveLeft()
     {
         if (canMove)
@@ -50,7 +50,8 @@ public class PlayerController : MonoBehaviour
     }
     private void ChangeHealth(int amount)
     {
-        Health = Health + amount;
+        Health += amount;
+        healthDisplay.DrawHearts();
 
         if (Health <= 0 && isDead != true)
         {
@@ -70,11 +71,24 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Heart")) // get health
+        {
+            ChangeHealth(1);
+        }
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             ChangeHealth(-1);
             Debug.Log($"Ow! New health: {Health}");
         }
+    }
+
+    public void ResetPlayer()
+    {
+        isGrounded = true;
+        canMove = true;
+        isDead = false;
+        Health = maxHealth;
+        transform.position = startPosition;
     }
 
 }
