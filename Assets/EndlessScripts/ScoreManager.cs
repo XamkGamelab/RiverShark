@@ -25,9 +25,10 @@ public class ScoreManager : MonoBehaviour
         }
 
     }
-    private void Update()
+    public void UpdateScore()
     {
-        
+        Score += 10;
+        UpdateScoreUi();
     }
 
     void UpdateScoreUi()

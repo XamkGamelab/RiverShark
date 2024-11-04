@@ -15,9 +15,13 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
     Rigidbody rb;
 
+    private ScoreManager scoreManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        scoreManager = GetComponent<ScoreManager>();
+
         isGrounded = true;
         canMove = true;
         isDead = false;
@@ -74,6 +78,10 @@ public class PlayerController : MonoBehaviour
         {
             ChangeHealth(-1);
             Debug.Log($"Ow! New health: {Health}");
+        }
+        if (collision.gameObject.CompareTag("Small fish"))
+        {
+            ScoreManager.UpdateScore();
         }
     }
 
