@@ -254,6 +254,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelPiece
       objectReference: {fileID: 0}
+    - target: {fileID: 4238122734019382932, guid: 9f48816dacd5ae94f997831e12050296,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

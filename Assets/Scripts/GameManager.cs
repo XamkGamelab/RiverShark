@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
         healthDisplay = GameObject.Find("HealthBar").GetComponent<HealthDisplay>();
         tryAgainButton = GameObject.Find("TryAgainButton");
         tryAgainButton.SetActive(false);
-
     }
 
     public void EndTheGame()
@@ -34,11 +33,9 @@ public class GameManager : MonoBehaviour
     public void ResetLevel()
     {
         Debug.Log("ResetLevel called");
-
         tryAgainButton.SetActive(false);
         playerController.ResetPlayer();
         healthDisplay.DrawHearts();
-
     }
 
 }
