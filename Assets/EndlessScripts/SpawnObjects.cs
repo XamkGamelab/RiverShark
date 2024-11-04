@@ -11,10 +11,14 @@ public class SpawnObjects : MonoBehaviour
     // Arvottu linja
     private float xPos;
 
+    public GameObject Fish;
+
+    private float fishPos;
+
     private void Start()
     {
         StartCoroutine(spawnTimer());
-
+        StartCoroutine(FishSpawnTimer());
     }
 
     IEnumerator spawnTimer()
@@ -30,6 +34,18 @@ public class SpawnObjects : MonoBehaviour
 
         // Aloittaa arvonnan alusta.
         StartCoroutine(spawnTimer());
+    }
+    IEnumerator FishSpawnTimer()
+    {
+        while (true)
+        {
+            // spawnataan 10 sekunnin välein.
+            yield return new WaitForSeconds(10);
+
+            fishPos = Random.Range(-3f, 3f);
+
+            Instantiate(Fish, new Vector3(fishPos, -0.05f, -55), transform.rotation);
+        }
     }
 }
 
