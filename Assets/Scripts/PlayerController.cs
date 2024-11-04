@@ -15,12 +15,11 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
     Rigidbody rb;
 
-    private ScoreManager scoreManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreManager = GetComponent<ScoreManager>();
+        
 
         isGrounded = true;
         canMove = true;
@@ -28,6 +27,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
         Health = maxHealth;
+
     }
 
     public void MoveLeft()
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
@@ -78,10 +79,6 @@ public class PlayerController : MonoBehaviour
         {
             ChangeHealth(-1);
             Debug.Log($"Ow! New health: {Health}");
-        }
-        if (collision.gameObject.CompareTag("Small fish"))
-        {
-            ScoreManager.UpdateScore();
         }
     }
 

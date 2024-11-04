@@ -8,6 +8,7 @@ TagManager:
   - Destroy
   - Obstacle
   - Ground
+  - Fish
   layers:
   - Default
   - TransparentFX
