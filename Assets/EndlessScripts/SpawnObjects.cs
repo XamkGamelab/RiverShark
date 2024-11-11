@@ -10,10 +10,12 @@ public class SpawnObjects : MonoBehaviour
     private int whichItem;
     // Arvottu linja
     private float xPos;
+    private float SpawnTime = 3.0f;
 
     private void Start()
     {
         StartCoroutine(spawnTimer());
+        StartCoroutine(UpdateDifficultyTimer());
         
     }
 
@@ -25,11 +27,24 @@ public class SpawnObjects : MonoBehaviour
 
         // Spawnataan arvottu objekti, arvotulle linjalle xPos, korkeutta ja kuinka kauas spawnataan voidaan muuttaa.
         Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, 0), allItems[whichItem].rotation);
+        //Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, 0), allItems[whichItem].rotation);
         
         // Spawnataan 3 sekunnin v�lein
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(SpawnTime);
         // Aloittaa arvonnan alusta.
         StartCoroutine(spawnTimer());
     }
+    
+    IEnumerator UpdateDifficultyTimer()
+    {
+        if (SpawnTime >= 0.8f)
+        {
+            SpawnTime = SpawnTime - 0.3f;
+        }
+        
+        yield return new WaitForSeconds(3);
+        StartCoroutine(UpdateDifficultyTimer());
+    }
+    
 }
 
