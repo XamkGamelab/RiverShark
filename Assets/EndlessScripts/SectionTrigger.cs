@@ -12,7 +12,7 @@ public class SectionTrigger : MonoBehaviour
         // Kun Collider kohtaa tagin Trigger niin luodaan levelin palanen haluttuun kohtaan.
         if (other.gameObject.CompareTag("Trigger"))
         {
-            Instantiate(levelSection, new Vector3(0, 0, -250), Quaternion.identity);
+            Instantiate(levelSection, new Vector3(0, 0, -429.4f), Quaternion.identity);
         }
     }
 }

@@ -14,20 +14,20 @@ public class SpawnObjects : MonoBehaviour
     private void Start()
     {
         StartCoroutine(spawnTimer());
-
+        
     }
 
     IEnumerator spawnTimer()
     {
-        // Spawnataan 3 sekunnin välein
-        yield return new WaitForSeconds(3);
-        // Arvottavien objektien lukumäärä 3kpl
+        // Arvottavien objektien lukumï¿½ï¿½rï¿½ 3kpl 
         whichItem = Random.Range(0, 3);
         xPos = Random.Range(-3f, 3f);
 
         // Spawnataan arvottu objekti, arvotulle linjalle xPos, korkeutta ja kuinka kauas spawnataan voidaan muuttaa.
-        Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, -55), allItems[whichItem].rotation);
-
+        Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, 0), allItems[whichItem].rotation);
+        
+        // Spawnataan 3 sekunnin vï¿½lein
+        yield return new WaitForSeconds(3);
         // Aloittaa arvonnan alusta.
         StartCoroutine(spawnTimer());
     }
