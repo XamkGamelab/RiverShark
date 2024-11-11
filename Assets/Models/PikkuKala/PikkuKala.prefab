@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6740744951696804628}
   - component: {fileID: 3364353500878146358}
   - component: {fileID: 8222862451806803803}
+  - component: {fileID: 7730336579489875643}
   m_Layer: 0
   m_Name: PikkuKala
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7730336579489875643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415386628392614157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052a5af19646553419560f64327e9d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

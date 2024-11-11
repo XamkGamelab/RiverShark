@@ -63,7 +63,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -124,7 +124,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 9.999999, y: 2.220446e-16, z: 15.381544}
   m_Center: {x: 0, y: 0, z: -2.6907527}
@@ -259,6 +259,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 7370337401700070035, guid: 9f48816dacd5ae94f997831e12050296,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.9852221
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370337401700070035, guid: 9f48816dacd5ae94f997831e12050296,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.99999964
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370337401700070035, guid: 9f48816dacd5ae94f997831e12050296,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.007390717
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370337401700070035, guid: 9f48816dacd5ae94f997831e12050296,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.000014887454
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -293,8 +313,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.000001, y: 4.5476956e-12, z: 9.999998}
-  m_Center: {x: -0.000000014901161, y: -0.0000015646219, z: 0.0000014305115}
+  m_Size: {x: 10, y: 4.547474e-12, z: 9.985884}
+  m_Center: {x: 0, y: -0.0000015274202, z: 0.007064822}
 --- !u!4 &1652625276168156783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2794994242746709738, guid: 9f48816dacd5ae94f997831e12050296,

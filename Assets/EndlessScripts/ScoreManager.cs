@@ -27,7 +27,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision detected!");
+        Debug.Log("fish");
 
         if (collision.gameObject.CompareTag("Fish"))
         {
