@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
@@ -93,10 +94,6 @@ public class PlayerController : MonoBehaviour
         {
             ChangeHealth(-1);
             Debug.Log($"Ow! New health: {Health}");
-        }
-        if (collision.gameObject.CompareTag("Border"))
-        {
-            Debug.Log("You hit a border.");
         }
     }
 
