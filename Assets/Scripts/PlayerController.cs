@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,15 +15,18 @@ public class PlayerController : MonoBehaviour
 
     public int maxHealth = 5;
     public int Health;
+    [SerializeField] private int invisibilityDurationInSeconds = 1;
+
     private int laneAmount = 5; // amount of lanes 
     private int lane = 3; //which lane the shark is at. Default is 3 (so if there is 5 lanes, the shark starts from the middle lane
     private float horizontalSpeed = 2f;
     private float jumpForce = 6f;
 
-    public bool isGrounded; //check whether the shark is in air or not
+    [SerializeField] private bool isGrounded; //check whether the shark is in air or not
     public bool isDead;
-    public bool canMoveRight;
-    public bool canMoveLeft;
+    [SerializeField] private bool canMoveRight;
+    [SerializeField] private bool canMoveLeft;
+    [SerializeField] private bool isInvinsible = false;
 
     Rigidbody rb;
 
@@ -70,6 +74,7 @@ public class PlayerController : MonoBehaviour
         Health += amount;
         healthDisplay.DrawHearts();
 
+
         if (Health <= 0 && isDead != true)
         {
             Death();
@@ -82,18 +87,25 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("WaterLevel"))
         {
             isGrounded = true;
         }
         if (collision.gameObject.CompareTag("Heart")) // get health
         {
+
             ChangeHealth(1);
         }
         if (collision.gameObject.CompareTag("Obstacle"))
         {
+            if (isInvinsible) return; //If player is invinsible, don't do anything
             ChangeHealth(-1);
             Debug.Log($"Ow! New health: {Health}");
+            StartCoroutine(PlayerBecomesInvinsible());
+        }
+        if (collision.gameObject.CompareTag("Fish"))
+        {
+            scoreManager.EatFish();
         }
     }
 
@@ -121,6 +133,20 @@ public class PlayerController : MonoBehaviour
         {
             canMoveLeft = true;
             canMoveRight = true;
+        }
+    }
+
+    private IEnumerator PlayerBecomesInvinsible()
+    {
+        isInvinsible = true;
+        yield return new WaitForSeconds(invisibilityDurationInSeconds);
+        isInvinsible = false;
+    }
+    private void MakePlayerInvisible()
+    {
+        if (!isInvinsible)
+        {
+            StartCoroutine(PlayerBecomesInvinsible());
         }
     }
 }

@@ -25,17 +25,11 @@ public class ScoreManager : MonoBehaviour
         }
 
     }
-    public void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("fish");
-
-        if (collision.gameObject.CompareTag("Fish"))
-        {
+    public void EatFish ()
+    {   
             Debug.Log("Shark ate a fish!");
             Score += 10;
             UpdateScoreUi();
-        }
-
     }
 
     void UpdateScoreUi()

@@ -9,6 +9,8 @@ TagManager:
   - Destroy
   - Trigger
   - Heart
+  - WaterLevel
+  - Fish
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

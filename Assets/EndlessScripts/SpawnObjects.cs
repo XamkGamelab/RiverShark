@@ -14,6 +14,7 @@ public class SpawnObjects : MonoBehaviour
     public GameObject Fish;
 
     private float fishPos;
+    private Transform spawn;
 
     private void Start()
     {
@@ -44,7 +45,7 @@ public class SpawnObjects : MonoBehaviour
 
             fishPos = Random.Range(-3f, 3f);
 
-            Instantiate(Fish, new Vector3(fishPos, -0.05f, -55), transform.rotation);
+            Instantiate(Fish, new Vector3(fishPos, -0.05f, -55),spawn.rotation);
         }
     }
 }

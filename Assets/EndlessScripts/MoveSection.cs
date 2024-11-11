@@ -20,5 +20,9 @@ public class MoveSection : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Collider hits object with destroy tag");
         }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
