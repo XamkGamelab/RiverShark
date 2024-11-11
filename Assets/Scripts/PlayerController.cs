@@ -101,6 +101,7 @@ public class PlayerController : MonoBehaviour
             if (isInvinsible) return; //If player is invinsible, don't do anything
             ChangeHealth(-1);
             Debug.Log($"Ow! New health: {Health}");
+            collision.gameObject.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(PlayerBecomesInvinsible());
         }
     }
