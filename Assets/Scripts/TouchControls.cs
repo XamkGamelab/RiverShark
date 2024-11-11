@@ -51,7 +51,7 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""2fb8ad71-8b3c-4352-8ee3-dbb32539b090"",
                     ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PrimaryContact"",

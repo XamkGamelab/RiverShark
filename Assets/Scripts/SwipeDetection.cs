@@ -24,6 +24,7 @@ public class SwipeDetection : MonoBehaviour
 
     private void Awake()
     {
+  
         Debug.Log("SwipeDetection awake");
         inputManager = InputManager.Instance;
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -36,12 +37,15 @@ public class SwipeDetection : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("Swipe Detection Enabled");
         inputManager.OnStartTouch += SwipeStart;
         inputManager.OnEndTouch += SwipeEnd;
+ 
     }
 
     private void OnDisable()
     {
+        Debug.Log("Swipe Detection Disabled");
         inputManager.OnStartTouch -= SwipeStart;
         inputManager.OnEndTouch -= SwipeEnd;
     }
