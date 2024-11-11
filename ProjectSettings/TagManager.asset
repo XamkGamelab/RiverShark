@@ -9,6 +9,7 @@ TagManager:
   - Destroy
   - Trigger
   - Heart
+  - WaterLevel
   layers:
   - Default
   - TransparentFX
