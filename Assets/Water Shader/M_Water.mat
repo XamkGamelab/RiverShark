@@ -86,8 +86,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FoamAmount: 1
-    - _FoamCutOff: 1
-    - _FoamScale: 50
+    - _FoamCutOff: 0.9
+    - _FoamScale: 44.53
     - _FoamSpeed: 2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -110,7 +110,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DeepColor: {r: 0, g: 0.28465188, b: 1, a: 0.8784314}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamColor: {r: 0.9481132, g: 0.9801759, b: 1, a: 1}
     - _RefractionVector: {r: 1, g: 1, b: 0, a: 0}
     - _ShallowColor: {r: 0, g: 0.7981026, b: 1, a: 0.8862745}
     - _Vector2: {r: 1, g: 1, b: 0, a: 0}
