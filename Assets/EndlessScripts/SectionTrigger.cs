@@ -13,6 +13,7 @@ public class SectionTrigger : MonoBehaviour
         if (other.gameObject.CompareTag("Trigger"))
         {
             Instantiate(levelSection, new Vector3(0, 0, -429.4f), Quaternion.identity);
+            Debug.Log("Section trigger hits trigger tag");
         }
     }
 }
