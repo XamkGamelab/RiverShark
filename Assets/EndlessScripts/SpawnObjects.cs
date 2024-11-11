@@ -25,6 +25,7 @@ public class SpawnObjects : MonoBehaviour
 
         // Spawnataan arvottu objekti, arvotulle linjalle xPos, korkeutta ja kuinka kauas spawnataan voidaan muuttaa.
         Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, 0), allItems[whichItem].rotation);
+        //Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, 0), allItems[whichItem].rotation);
         
         // Spawnataan 3 sekunnin v�lein
         yield return new WaitForSeconds(3);
