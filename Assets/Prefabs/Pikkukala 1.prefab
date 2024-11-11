@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2389505180849603502}
   - component: {fileID: 7104477856161153256}
   m_Layer: 0
-  m_Name: Pikkukala
+  m_Name: Pikkukala 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
