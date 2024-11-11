@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 startPosition;
 
-    [SerializeField] private int maxHealth = 5;
-    [SerializeField] private int Health;
+    public int maxHealth = 5;
+    public int Health;
+    [SerializeField] private int invisibilityDurationInSeconds = 1;
 
     private int laneAmount = 5; // amount of lanes 
     private int lane = 3; //which lane the shark is at. Default is 3 (so if there is 5 lanes, the shark starts from the middle lane
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 6f;
 
     [SerializeField] private bool isGrounded; //check whether the shark is in air or not
-    [SerializeField] private bool isDead;
+    public bool isDead;
     [SerializeField] private bool canMoveRight;
     [SerializeField] private bool canMoveLeft;
     [SerializeField] private bool isInvinsible = false;
@@ -97,9 +98,10 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            if (!isInvinsible) return; //If player is invinsible, don't do anything
+            if (isInvinsible) return; //If player is invinsible, don't do anything
             ChangeHealth(-1);
             Debug.Log($"Ow! New health: {Health}");
+            StartCoroutine(PlayerBecomesInvinsible());
         }
     }
 
@@ -133,6 +135,8 @@ public class PlayerController : MonoBehaviour
     private IEnumerator PlayerBecomesInvinsible()
     {
         isInvinsible = true;
+        yield return new WaitForSeconds(invisibilityDurationInSeconds);
+        isInvinsible = false;
     }
     private void MakePlayerInvisible()
     {
