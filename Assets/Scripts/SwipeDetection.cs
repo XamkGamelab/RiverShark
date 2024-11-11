@@ -5,26 +5,28 @@ using UnityEngine;
 
 public class SwipeDetection : MonoBehaviour
 {
-    [SerializeField]
-    private float minimumDistance = 0.01f;
-    [SerializeField]
-    private float maximumTime = 1f;
 
-    private float verticalDirectionThreshold = 0.7f; 
-    private float horizontalDirectionThreshold = 0.8f; 
+    [SerializeField] private float minimumDistance = 0.0002f;
+    [SerializeField] private float maximumTime = 1.5f;
 
-    [SerializeField]
-    private PlayerController playerController;
+    private float verticalDirectionThreshold = 0.3f; 
+    private float horizontalDirectionThreshold = 0.4f;
 
+
+    [SerializeField] private PlayerController playerController;
     private InputManager inputManager;
+
     private Vector2 startPosition;
     private Vector2 endPosition;
+
     private float startTime;
     private float endTime;
 
     private void Awake()
     {
+        Debug.Log("SwipeDetection awake");
         inputManager = InputManager.Instance;
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         if (inputManager == null)
         {

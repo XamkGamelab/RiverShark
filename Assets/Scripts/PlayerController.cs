@@ -5,44 +5,61 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 5;
-    [SerializeField] private int Health;
-    private GameManager gameManager;
-    private float horizontalSpeed = 1f;
-    private float jumpForce = 5f;
-    public bool isGrounded;
+
+    [SerializeField] private HealthDisplay healthDisplay;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private ScoreManager scoreManager;
+
+    private Vector3 startPosition;
+
+    public int maxHealth = 5;
+    public int Health;
+    private int laneAmount = 5; // amount of lanes 
+    private int lane = 3; //which lane the shark is at. Default is 3 (so if there is 5 lanes, the shark starts from the middle lane
+    private float horizontalSpeed = 2f;
+    private float jumpForce = 6f;
+
+    public bool isGrounded; //check whether the shark is in air or not
     public bool isDead;
-    public bool canMove;
+    public bool canMoveRight;
+    public bool canMoveLeft;
+
     Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        isGrounded = true;
-        canMove = true;
-        isDead = false;
+        
+        startPosition = transform.position;
         rb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
-        Health = maxHealth;
+        healthDisplay = GameObject.Find("HealthBar").GetComponent<HealthDisplay>();
+        scoreManager = GameObject.Find("Score Manager").GetComponent <ScoreManager>();
+        ResetPlayer();
+        CheckLane();
     }
-
     public void MoveLeft()
     {
-        if (canMove)
+
+        if (canMoveLeft && !isDead)
         {
-            transform.position += new Vector3(-horizontalSpeed, 0, 0);
+            transform.position += new Vector3(horizontalSpeed, 0, 0);
+            lane--;
+            CheckLane();
         }
     }
     public void MoveRight()
     {
-        if (canMove)
+         if (canMoveRight && !isDead) 
         {
-            transform.position += new Vector3(horizontalSpeed, 0, 0);
+            transform.position += new Vector3(-horizontalSpeed, 0, 0);
+            lane++;
+            CheckLane();
         }
     }
     public void Jump()
     {
-        if (isGrounded && canMove)
+        if (isGrounded && !isDead) // can't jump if shark is still on air
         {
             isGrounded = false;
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
@@ -50,7 +67,8 @@ public class PlayerController : MonoBehaviour
     }
     private void ChangeHealth(int amount)
     {
-        Health = Health + amount;
+        Health += amount;
+        healthDisplay.DrawHearts();
 
         if (Health <= 0 && isDead != true)
         {
@@ -60,8 +78,6 @@ public class PlayerController : MonoBehaviour
     private void Death()
     {
         isDead = true;
-        canMove = false;
-        Debug.Log("RIP");
         gameManager.EndTheGame();
     }
     private void OnCollisionEnter(Collision collision)
@@ -70,6 +86,10 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Heart")) // get health
+        {
+            ChangeHealth(1);
+        }
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             ChangeHealth(-1);
@@ -77,4 +97,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ResetPlayer()
+    {
+        isGrounded = true;
+        canMoveLeft = true;
+        canMoveRight = true;
+        isDead = false;
+        Health = maxHealth;
+        scoreManager.Score = 0;
+        transform.position = startPosition;
+    }
+    private void CheckLane()
+    {
+        if (lane == 1)
+        {
+            canMoveLeft = false;
+        }
+        else if (lane == laneAmount)
+        {
+            canMoveRight = false;
+        }
+        else
+        {
+            canMoveLeft = true;
+            canMoveRight = true;
+        }
+    }
 }

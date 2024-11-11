@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1216663877781767457}
   - component: {fileID: 3976592469863793217}
   - component: {fileID: 3924211400413682039}
-  - component: {fileID: 8030915224129052930}
+  - component: {fileID: 4801324784193841982}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -47,11 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a8a0e601c3d6e43b4c1455f6e2f005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthDisplay: {fileID: 0}
+  gameManager: {fileID: 0}
+  scoreManager: {fileID: 0}
   maxHealth: 5
   Health: 0
   isGrounded: 0
   isDead: 0
-  canMove: 0
+  canMoveRight: 0
+  canMoveLeft: 0
 --- !u!54 &3924211400413682039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79,8 +83,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &8030915224129052930
-CapsuleCollider:
+--- !u!65 &4801324784193841982
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,11 +101,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.7
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.82223916, z: 1}
+  m_Center: {x: 0, y: 0.17213881, z: 0}
 --- !u!1001 &8331633261819935173
 PrefabInstance:
   m_ObjectHideFlags: 0
