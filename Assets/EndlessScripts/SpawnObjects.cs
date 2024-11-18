@@ -8,13 +8,13 @@ public class SpawnObjects : MonoBehaviour
     public Transform[] allItems;
     // arvottu objekti
     private int whichItem;
-    // Arvottu linja
+    // Esteen arvottu linja
     private float xPos;
 
     public GameObject Fish;
 
+    //pistekalan arvottu linja
     private float fishPos;
-    private Transform spawn;
 
     private void Start()
     {
@@ -38,15 +38,15 @@ public class SpawnObjects : MonoBehaviour
     }
     IEnumerator FishSpawnTimer()
     {
-        while (true)
-        {
             // spawnataan 10 sekunnin välein.
             yield return new WaitForSeconds(10);
 
             fishPos = Random.Range(-3f, 3f);
 
-            Instantiate(Fish, new Vector3(fishPos, -0.05f, -55),spawn.rotation);
-        }
+            GameObject spawnedFish = Instantiate(Fish, new Vector3(fishPos, -0.05f, -55), Quaternion.identity );
+        spawnedFish.transform.rotation = Quaternion.identity;
+        Debug.Log($"Spawned Fish Rotation: {spawnedFish.transform.rotation.eulerAngles}");
+        StartCoroutine(FishSpawnTimer());
     }
 }
 
