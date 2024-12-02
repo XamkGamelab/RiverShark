@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 
@@ -10,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private HealthDisplay healthDisplay;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private ScoreManager scoreManager;
-
+    [SerializeField] private Animator animController;
+    
     private Vector3 startPosition;
 
     public int maxHealth = 5;
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            animController.SetTrigger("Jump");
         }
     }
     private void ChangeHealth(int amount)
