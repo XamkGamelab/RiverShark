@@ -51,6 +51,7 @@ MonoBehaviour:
   healthDisplay: {fileID: 0}
   gameManager: {fileID: 0}
   scoreManager: {fileID: 0}
+  animController: {fileID: 7356144003038130790}
   maxHealth: 5
   Health: 0
   invisibilityDurationInSeconds: 1
@@ -59,6 +60,7 @@ MonoBehaviour:
   canMoveRight: 0
   canMoveLeft: 0
   isInvinsible: 0
+  SharkMeshObject: {fileID: 6301578174715859978}
 --- !u!54 &3924211400413682039
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -277,6 +279,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7356144003038130790}
   m_SourcePrefab: {fileID: 100100000, guid: 37397b0382eac2e48af855a3712a9ee6, type: 3}
+--- !u!1 &6301578174715859978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2660602332106993103, guid: 37397b0382eac2e48af855a3712a9ee6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8331633261819935173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8364681160099782190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37397b0382eac2e48af855a3712a9ee6,

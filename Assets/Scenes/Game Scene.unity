@@ -627,11 +627,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 397712466326803664, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1216663877781767457, guid: aa7ce829d345461479e064d3491c48b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -682,35 +677,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1313448218943210746, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488209277002975032, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3310096449447673632, guid: aa7ce829d345461479e064d3491c48b1,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3310096449447673632, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3631110034593438730, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3919966946931458924, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3976592469863793217, guid: aa7ce829d345461479e064d3491c48b1,
         type: 3}
@@ -727,61 +697,6 @@ PrefabInstance:
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 785252978}
-    - target: {fileID: 3976592469863793217, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: animController
-      value: 
-      objectReference: {fileID: 1542841671}
-    - target: {fileID: 4897683945726456396, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869154850077797699, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6006208723937034183, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6301578174715859978, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6879880219354800335, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770415297635205389, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8106650311101033327, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446241047311296430, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8778789678207058200, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177915610218497172, guid: aa7ce829d345461479e064d3491c48b1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2769,12 +2684,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466303570}
   m_CullTransparentMesh: 1
---- !u!95 &1542841671 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7356144003038130790, guid: aa7ce829d345461479e064d3491c48b1,
-    type: 3}
-  m_PrefabInstance: {fileID: 508635135}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1545786990
 GameObject:
   m_ObjectHideFlags: 0

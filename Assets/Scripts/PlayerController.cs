@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isInvinsible = false;
 
     Rigidbody rb;
+    private Material material;
+    [SerializeField] private GameObject SharkMeshObject;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +42,21 @@ public class PlayerController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         healthDisplay = GameObject.Find("HealthBar").GetComponent<HealthDisplay>();
         scoreManager = GameObject.Find("Score Manager").GetComponent <ScoreManager>();
+        material = SharkMeshObject.GetComponent<Renderer>().material;
         ResetPlayer();
         CheckLane();
+    }
+    void Update()
+    {
+        if(!material) return;
+        if(!isInvinsible) return;
+        
+        float target = 6.0f;
+        float current = material.GetFloat("_FresnelFloat");
+        float change = target - current;
+        change *= Time.deltaTime;
+        current += change;
+        material.SetFloat("_FresnelFloat", current);
     }
     public void MoveLeft()
     {
@@ -104,7 +119,6 @@ public class PlayerController : MonoBehaviour
             if (isInvinsible) return; //If player is invinsible, don't do anything
             ChangeHealth(-1);
             Debug.Log($"Ow! New health: {Health}");
-            
             StartCoroutine(PlayerBecomesInvinsible());
         }
     }
@@ -141,6 +155,7 @@ public class PlayerController : MonoBehaviour
         isInvinsible = true;
         yield return new WaitForSeconds(invisibilityDurationInSeconds);
         isInvinsible = false;
+        material.SetFloat("_FresnelFloat", 0f);
     }
     private void MakePlayerInvisible()
     {
