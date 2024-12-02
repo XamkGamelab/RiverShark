@@ -23,7 +23,7 @@ public class SpawnObjects : MonoBehaviour
     {
         // Arvottavien objektien lukum��r� 3kpl 
         whichItem = Random.Range(0, 3);
-        xPos = Random.Range(-3f, 3f);
+        xPos = Random.Range(-5f, 5f);
 
         // Spawnataan arvottu objekti, arvotulle linjalle xPos, korkeutta ja kuinka kauas spawnataan voidaan muuttaa.
         Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, 0), allItems[whichItem].rotation);
@@ -37,12 +37,13 @@ public class SpawnObjects : MonoBehaviour
     
     IEnumerator UpdateDifficultyTimer()
     {
-        if (SpawnTime >= 0.8f)
+        if (SpawnTime >= 0.5f)
         {
-            SpawnTime = SpawnTime - 0.3f;
+            float NewSpawnTime = SpawnTime - 0.6f;
+            SpawnTime = Mathf.Clamp(NewSpawnTime, 0.5f, 10f);
         }
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         StartCoroutine(UpdateDifficultyTimer());
     }
     
