@@ -25,7 +25,6 @@ public class SwipeDetection : MonoBehaviour
 
     private void Awake()
     {
-  
         Debug.Log("SwipeDetection awake");
         inputManager = InputManager.Instance;
 
@@ -57,6 +56,7 @@ public class SwipeDetection : MonoBehaviour
         string gameSceneName = "Game Scene";
         string currentSceneName = currentScene.name;
 
+        //Check for the current scene. Disable or enable swipedetection based on current scene.
         if (menuSceneName == currentSceneName)
         {
             Debug.Log("In menu");
@@ -71,18 +71,17 @@ public class SwipeDetection : MonoBehaviour
     }
     private void OnDestroy()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;         // Unsubscribe from scene loaded event
+        SceneManager.sceneLoaded -= OnSceneLoaded;// Unsubscribe from scene loaded event
     }
 
-
-    private void SwipeStart(Vector2 position, float time)
+    private void SwipeStart(Vector2 position, float time) //Get the starting point of the swipe
     {
         startPosition = Camera.main.ScreenToWorldPoint(new Vector3(position.x, position.y, 10f));
         startTime = time;
         Debug.Log($"Swipe started at screen position: {startPosition}");
     }
 
-    private void SwipeEnd(Vector2 position, float time)
+    private void SwipeEnd(Vector2 position, float time) // Get the ending point of the swipe
     {
         endPosition = Camera.main.ScreenToWorldPoint(new Vector3(position.x, position.y, 10f));
         endTime = time;
@@ -97,8 +96,8 @@ public class SwipeDetection : MonoBehaviour
 
         Vector2 Direction = (endPosition-startPosition).normalized;
 
-        Debug.Log($"Start Position: {startPosition}, End Position: {endPosition}");
-        Debug.Log($"Distance: {distance}, Time Elapsed: {timeElapsed}, Direction: {Direction}");
+        //Debug.Log($"Start Position: {startPosition}, End Position: {endPosition}");
+        //Debug.Log($"Distance: {distance}, Time Elapsed: {timeElapsed}, Direction: {Direction}");
 
         if (timeElapsed <= maximumTime && distance >= minimumDistance)
         {
@@ -108,11 +107,12 @@ public class SwipeDetection : MonoBehaviour
 
     private void SwipeDirection(Vector2 direction)
     {
+        //Get direction's Y and X components' absolute value
         float absX = Mathf.Abs(direction.x);
         float absY = Mathf.Abs(direction.y);
         Debug.Log($"absX: {absX} absY: {absY}");
 
-    if (absY > absX)
+    if (absY > absX) //Swipe was more vertical than horizontal
         {
             if (Vector2.Dot(Vector2.up, direction) > verticalDirectionThreshold)
             {
