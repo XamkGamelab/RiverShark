@@ -2,6 +2,7 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-1)] // this script will run before any other script
 public class InputManager : Singleton<InputManager>
@@ -20,11 +21,16 @@ public class InputManager : Singleton<InputManager>
 
     #endregion
     private TouchControls touchControls;
+    public static InputManager instance { get; private set; }
 
     protected override void Awake()
     {
+
         base.Awake();
-        touchControls = new TouchControls();
+        if (touchControls  == null )
+        {
+            touchControls = new TouchControls();
+        }
         mainCamera = Camera.main;
 
         if (mainCamera == null )
@@ -38,12 +44,14 @@ public class InputManager : Singleton<InputManager>
     }
     private void OnEnable()
     {
-        touchControls.Enable();
+        touchControls?.Enable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
         Debug.Log("InputManager enabled, subscribing to events.");
     }
     private void OnDisable()
     {
-        touchControls.Disable();
+        touchControls?.Disable();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         Debug.Log("InputManager disabled, unsubscribing from events.");
     }
     void Start()
@@ -88,6 +96,10 @@ public class InputManager : Singleton<InputManager>
     public Vector2 PrimaryPosition()
     {
         return Utils.ScreenToWorld(mainCamera, touchControls.Touch.PrimaryPosition.ReadValue<Vector2>());
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
+    {
+        mainCamera = Camera.main;
     }
 
 }

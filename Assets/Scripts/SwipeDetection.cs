@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SwipeDetection : MonoBehaviour
 {
@@ -27,12 +28,12 @@ public class SwipeDetection : MonoBehaviour
   
         Debug.Log("SwipeDetection awake");
         inputManager = InputManager.Instance;
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         if (inputManager == null)
         {
             Debug.Log("Error: InputManager is null");
         }
+        SceneManager.sceneLoaded += OnSceneLoaded; //Delay assigning PlayerController, until the scene is fully loaded.
     }
 
     private void OnEnable()
@@ -49,6 +50,30 @@ public class SwipeDetection : MonoBehaviour
         inputManager.OnStartTouch -= SwipeStart;
         inputManager.OnEndTouch -= SwipeEnd;
     }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Scene currentScene = scene; 
+        string menuSceneName = "MainMenu";
+        string gameSceneName = "Game Scene";
+        string currentSceneName = currentScene.name;
+
+        if (menuSceneName == currentSceneName)
+        {
+            Debug.Log("In menu");
+            enabled = false;
+        }
+        if (currentSceneName ==  gameSceneName)
+        {
+            playerController = GameObject.FindObjectOfType<PlayerController>();
+            Debug.Log("In Game");
+            enabled = true;
+        }
+    }
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;         // Unsubscribe from scene loaded event
+    }
+
 
     private void SwipeStart(Vector2 position, float time)
     {

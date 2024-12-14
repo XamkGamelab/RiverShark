@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UIElements;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
         tryAgainButton.SetActive(false);
         playerController.ResetPlayer();
         healthDisplay.DrawHearts();
+    }
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }
