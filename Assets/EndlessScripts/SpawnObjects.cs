@@ -6,6 +6,7 @@ public class SpawnObjects : MonoBehaviour
 {
     // Array mihin talletetaan kaikki spawnattavat objektit
     public Transform[] allItems;
+    public GameObject fishPrefab;
     // arvottu objekti
     private int whichItem;
     // Arvottu linja
@@ -16,7 +17,8 @@ public class SpawnObjects : MonoBehaviour
     {
         StartCoroutine(spawnTimer());
         StartCoroutine(UpdateDifficultyTimer());
-        
+
+
     }
 
     IEnumerator spawnTimer()
@@ -28,7 +30,7 @@ public class SpawnObjects : MonoBehaviour
         // Spawnataan arvottu objekti, arvotulle linjalle xPos, korkeutta ja kuinka kauas spawnataan voidaan muuttaa.
         Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, 0), allItems[whichItem].rotation);
         //Instantiate(allItems[whichItem], new Vector3(xPos, -0.05f, 0), allItems[whichItem].rotation);
-        
+        SpawnFish();
         // Spawnataan 3 sekunnin v�lein
         yield return new WaitForSeconds(SpawnTime);
         // Aloittaa arvonnan alusta.
@@ -45,6 +47,10 @@ public class SpawnObjects : MonoBehaviour
         
         yield return new WaitForSeconds(2);
         StartCoroutine(UpdateDifficultyTimer());
+    }
+    private void SpawnFish()
+    {
+        Instantiate(fishPrefab, new Vector3(xPos, -0.05f, 0), fishPrefab.transform.rotation);
     }
     
 }
